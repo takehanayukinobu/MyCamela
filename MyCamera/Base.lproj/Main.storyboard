@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyCamera" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,123 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dwl-zO-hhD">
+                                <rect key="frame" x="66" y="50" width="243" height="527"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdZ-4t-Wdc">
+                                <rect key="frame" x="66" y="607" width="243" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9Kr-mS-8mo"/>
+                                </constraints>
+                                <state key="normal" title="カメラを起動する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kd6-8M-HTY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dwl-zO-hhD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="5la-9y-iFg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mdZ-4t-Wdc" secondAttribute="trailing" constant="50" id="7DQ-md-kH8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mdZ-4t-Wdc" secondAttribute="bottom" constant="30" id="Ryp-Sy-KNe"/>
+                            <constraint firstItem="mdZ-4t-Wdc" firstAttribute="top" secondItem="Dwl-zO-hhD" secondAttribute="bottom" constant="30" id="Tim-B8-kI8"/>
+                            <constraint firstItem="mdZ-4t-Wdc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="Vhz-I4-X6m"/>
+                            <constraint firstItem="Dwl-zO-hhD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="a00-0L-unY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dwl-zO-hhD" secondAttribute="trailing" constant="50" id="zjK-xv-UYT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pictureImage" destination="Dwl-zO-hhD" id="B58-O7-ARi"/>
+                        <segue destination="JnY-vb-wPO" kind="show" identifier="showEffectView" id="Lzl-El-cf0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-892" y="140"/>
+        </scene>
+        <!--Effect View Controller-->
+        <scene sceneID="HXZ-Yh-48R">
+            <objects>
+                <viewController id="JnY-vb-wPO" customClass="EffectViewController" customModule="MyCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ALK-dH-mNE"/>
+                        <viewControllerLayoutGuide type="bottom" id="nHa-Qy-nG2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hlB-ci-07v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="izR-Jg-Dvb">
+                                <rect key="frame" x="66" y="40" width="243" height="417"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NW8-Bq-A1e">
+                                <rect key="frame" x="66" y="487" width="243" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="vyt-U4-BzK"/>
+                                </constraints>
+                                <state key="normal" title="エフェクト">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="effectButtonAction:" destination="JnY-vb-wPO" eventType="touchUpInside" id="MOp-nH-Pvz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEo-rg-65Y">
+                                <rect key="frame" x="66" y="547" width="243" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Nx-Cj-cYO"/>
+                                </constraints>
+                                <state key="normal" title="シェア">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareButtonAction:" destination="JnY-vb-wPO" eventType="touchUpInside" id="v3H-Dg-zGr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ud-FL-WCA">
+                                <rect key="frame" x="66" y="607" width="243" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eYN-W7-8Yd"/>
+                                </constraints>
+                                <state key="normal" title="閉じる">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="JnY-vb-wPO" eventType="touchUpInside" id="hwQ-Ju-oHQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Ud-FL-WCA" firstAttribute="leading" secondItem="hlB-ci-07v" secondAttribute="leadingMargin" constant="50" id="9LK-RL-ZCw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Ud-FL-WCA" secondAttribute="trailing" constant="50" id="9as-kp-lPX"/>
+                            <constraint firstItem="eEo-rg-65Y" firstAttribute="top" secondItem="NW8-Bq-A1e" secondAttribute="bottom" constant="30" id="AEF-iU-Enf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eEo-rg-65Y" secondAttribute="trailing" constant="50" id="JbD-mX-Bks"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="izR-Jg-Dvb" secondAttribute="trailing" constant="50" id="QfZ-2g-TOe"/>
+                            <constraint firstItem="izR-Jg-Dvb" firstAttribute="top" secondItem="ALK-dH-mNE" secondAttribute="bottom" constant="20" id="ZAt-P2-Hg5"/>
+                            <constraint firstItem="9Ud-FL-WCA" firstAttribute="top" secondItem="eEo-rg-65Y" secondAttribute="bottom" constant="30" id="ZvZ-f6-sYu"/>
+                            <constraint firstItem="NW8-Bq-A1e" firstAttribute="top" secondItem="izR-Jg-Dvb" secondAttribute="bottom" constant="30" id="dV4-Rs-0TM"/>
+                            <constraint firstItem="izR-Jg-Dvb" firstAttribute="leading" secondItem="hlB-ci-07v" secondAttribute="leadingMargin" constant="50" id="n0a-iG-kmL"/>
+                            <constraint firstItem="eEo-rg-65Y" firstAttribute="leading" secondItem="hlB-ci-07v" secondAttribute="leadingMargin" constant="50" id="nIA-11-xXF"/>
+                            <constraint firstItem="NW8-Bq-A1e" firstAttribute="leading" secondItem="hlB-ci-07v" secondAttribute="leadingMargin" constant="50" id="oSa-oB-9fE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NW8-Bq-A1e" secondAttribute="trailing" constant="50" id="rmV-Nw-N5n"/>
+                            <constraint firstItem="nHa-Qy-nG2" firstAttribute="top" secondItem="9Ud-FL-WCA" secondAttribute="bottom" constant="30" id="sfp-F2-W8Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="effectImage" destination="izR-Jg-Dvb" id="wyr-h1-uxh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vm-wv-Kl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95" y="140"/>
         </scene>
     </scenes>
 </document>
